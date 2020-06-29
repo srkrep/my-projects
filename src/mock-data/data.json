@@ -1,0 +1,136 @@
+[
+    {
+        "laptops": [
+            {
+                "id": 101,
+                "product_name": "Dell",
+                "product_model": "5700",
+                "image": "../images/laptops/img_01.jpg",
+                "price": 60000,
+                "quantity": 0,
+                "inCart": false
+            },
+            {
+                "id": 102,
+                "product_name": "Lenovo",
+                "product_model": "M7689",
+                "image": "../images/laptops/img_02.jpg",
+                "price": 35200,
+                "quantity": 0,
+                "inCart": false
+            },
+            {
+                "id": 103,
+                "product_name": "Thoshiba",
+                "product_model": "HT1900",
+                "image": "../images/laptops/img_03.jpg",
+                "price": 42500,
+                "quantity": 0,
+                "inCart": false
+            },
+            {
+                "id": 104,
+                "product_name": "Sony",
+                "product_model": "vio",
+                "image": "../images/laptops/img_04.jpg",
+                "price": 72000,
+                "quantity": 0,
+                "inCart": false
+            }
+        ],
+        "accessories": [
+            {
+                "id": 11,
+                "product_name": "Mouse",
+                "product_model": "Dell 151",
+                "image": "../images/accessories/img_01.jpg",
+                "price": 250,
+                "quantity": 0,
+                "inCart": false
+            },
+            {
+                "id": 12,
+                "product_name": "Laptop Desks",
+                "product_model": "LD 1600 Wood",
+                "image": "../images/accessories/img_02.jpg",
+                "price": 3500,
+                "quantity": 0,
+                "inCart": false
+            },
+            {
+                "id": 13,
+                "product_name": "Web Camera",
+                "product_model": "Sony WC100",
+                "image": "../images/accessories/img_03.jpg",
+                "price": 1500,
+                "quantity": 0,
+                "inCart": false
+            },
+            {
+                "id": 14,
+                "product_name": "Docking Station",
+                "product_model": "HP 7800",
+                "image": "../images/accessories/img_04.jpg",
+                "price": 3500,
+                "quantity": 0,
+                "inCart": false
+            },
+            {
+                "id": 18,
+                "product_name": "HeadSet",
+                "product_model": "Sony 1500",
+                "image": "../images/accessories/img_05.jpg",
+                "price": 4000,
+                "quantity": 0,
+                "inCart": false
+            }
+        ],
+        "cameras": [
+            {
+                "id": 1001,
+                "product_name": "Fuji Flim",
+                "product_model": "x-T4",
+                "image": "../images/cameras/img_01.jpg",
+                "price": 30000,
+                "quantity": 0,
+                "inCart": false
+            },
+            {
+                "id": 1002,
+                "product_name": "Go Pro",
+                "product_model": "Hero 8 Black",
+                "image": "../images/cameras/img_02.jpg",
+                "price": 17200,
+                "quantity": 0,
+                "inCart": false
+            },
+            {
+                "id": 1003,
+                "product_name": "Tamron",
+                "product_model": "SP 24 70MM",
+                "image": "../images/cameras/img_03.jpg",
+                "price": 22500,
+                "quantity": 0,
+                "inCart": false
+            },
+            {
+                "id": 1004,
+                "product_name": "Amazon Basics",
+                "product_model": "Camera Accessories",
+                "image": "../images/cameras/img_04.jpg",
+                "price": 16000,
+                "quantity": 0,
+                "inCart": false
+            },
+            {
+                "id": 1002,
+                "product_name": "Canon",
+                "product_model": "1500D",
+                "image": "../images/cameras/img_05.jpg",
+                "price": 10000,
+                "quantity": 0,
+                "inCart": false
+            }
+        ]
+    }
+]
