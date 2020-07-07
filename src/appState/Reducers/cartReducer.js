@@ -1,38 +1,83 @@
-import {
-    ADD_PRODUCT_TO_CART,
-
-} from '../Actions/types';
-// import MockData from '../../data/data.json';
-
-
-// const productData = MockData.map((e) => {
-//     return e
-// })
-
-// const newProductData = []
-
-// const productData = Object.keys(MockData)
-
-// const { laptops, cameras, accessories } = MockData
-// // const allproducts = laptops.concat(cameras, accessories);
-// const allproducts = new Set(...laptops, ...cameras, ...accessories);
-
-// console.table("MOCK DATA @ REDUCER", Object.keys(allproducts))
-
+import { ADD_TO_CART, REMOVE_FROM_CART, ADD_QTY, REMOVE_QTY } from '../Actions/types';
+import MockData from '../../mock-data/data.json';
 
 const initialState = {
-    cartNumbers: 0,
+    items:[],
+    itemsInCart: 0,
+    totalPrice: 0
 }
 
-console.log("OOOOOOOOOO", initialState.products)
+console.log("Cart Reducer", initialState)
 
 export default (state = initialState, action) => {
-    switch (action.type) {
-        case ADD_PRODUCT_TO_CART:
+    let itemSelected = ""
+    console.log("Cart Reducer", itemSelected)
+    switch (action.type) {  
+        case ADD_TO_CART:
+            itemSelected = MockData.toys.find(item => item.id === action.payload)
+            itemSelected.qty += 1
+            // itemSelected.inCart = true
             return {
-
+              ...state,
+              items: {
+                    ...state.items,
+                    [action.payload]:itemSelected
+                  },
+              itemsInCart : state.itemsInCart += 1,
+              totalPrice : state.totalPrice + itemSelected.price
             }
-
+            console.log("::::::::::",  this.items )
+        case REMOVE_FROM_CART:
+            itemSelected = MockData.toys.find(item => item.id === action.payload)
+            let overallQty = itemSelected.qty
+            itemSelected.qty = 0
+            // itemSelected.pname = ""
+            // itemSelected.image = ""
+            itemSelected.inCart = false
+            return {
+                ...state,
+                totalPrice : state.totalPrice - (overallQty * itemSelected.price),
+                itemsInCart: state.itemsInCart - overallQty,
+                items: {
+                    ...state.items,
+                    [action.payload]:itemSelected
+                  },
+                
+            }
+        case ADD_QTY:
+            itemSelected = MockData.toys.find(item => item.id === action.payload)
+            itemSelected.qty += 1
+            return {
+                ...state,
+                totalPrice : state.totalPrice + itemSelected.price,
+                itemsInCart: state.itemsInCart + 1,
+                items: {
+                    ...state.items,
+                    [action.payload]:itemSelected
+                }
+            }
+        case REMOVE_QTY:
+            itemSelected = MockData.toys.find(item => item.id === action.payload)
+            let updatedTotalPrice = 0;
+            let updatedItemInCart = 0;
+            if(itemSelected.qty <= 0){
+                itemSelected.qty = 0
+                updatedTotalPrice = state.totalPrice
+                updatedItemInCart = state.itemsInCart
+            }else{
+                itemSelected.qty -= 1
+                updatedTotalPrice = state.totalPrice - itemSelected.price
+                updatedItemInCart = state.itemsInCart - 1
+            }
+            return {
+                ...state,
+                totalPrice : updatedTotalPrice,
+                itemsInCart: updatedItemInCart,
+                items: {
+                    ...state.items,
+                    [action.payload]:itemSelected
+                }
+            }
         default:
             return state;
     }

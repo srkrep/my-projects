@@ -1,13 +1,16 @@
-import React from 'react';
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './App.css';
 
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router, Switch, Route, useHistory, useLocation } from 'react-router-dom';
-import rootReducer from './appState/Reducers/';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+
+import persistReducer from './appState/Reducers/';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
@@ -21,27 +24,35 @@ import CheckOut from './components/CheckOut';
 import Navbar from './components/Navbar';
 
 import { createBrowserHistory } from "history";
+import PrivateRoute from './components/PrivateRoute';
+import Auth from './components/Auth';
 
 const customHistory = createBrowserHistory();
 const middleware = [thunk];
 const store = createStore(
-    rootReducer,
+    persistReducer,
     composeWithDevTools(applyMiddleware(...middleware))
 );
+
+const persistor = persistStore(store)
+
 
 ReactDOM.render(
     <Provider store={store}>
         <Router history={customHistory}>
-            <Navbar />
-            <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/signin" exact component={SignIn} />
-                <Route path="/signup" exact component={SignUp} />
-                <Route path="/cart" component={Cart} />
-                <Route path="/checkout" component={CheckOut} />
-                <Route path="/thankyou" component={ThankYou} />
-                <Route path="*" component={PageNotFound} />
-            </Switch>
+           <PersistGate persistor={persistor}>
+                <Navbar history={customHistory}/>
+                <Switch>
+                    <Route path="/" exact component={Home} /> 
+                    <Route path="/signin" component={SignIn} />
+                    <Route path="/signup" component={SignUp} />
+                    <PrivateRoute path="/cart" exact component={Cart} auth={Auth.isAuthenticated}/>
+                    <PrivateRoute path="/checkout" exact component={CheckOut} auth={Auth.isAuthenticated} />
+                    <Route path="/thankyou" component={ThankYou} />
+                    <Redirect from="/signout" to="/" />
+                    <Route path="*" component={PageNotFound} />
+                </Switch>
+           </PersistGate>
         </Router>
     </Provider>, document.getElementById('root'));
 
