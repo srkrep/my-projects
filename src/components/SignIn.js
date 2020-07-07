@@ -31,9 +31,6 @@ class SignIn extends Component {
 
         const signInSubmit = (e) => {
             e.preventDefault();
-            let userSignIn = this.state
-            this.setState(this.state)
-            this.props.userSignInDetails(userSignIn);
             const USER_EMAIL = localStorage.getItem('USER_EMAIL');
             const USER_PASSWORD = localStorage.getItem('USER_PASSWORD');
             USER_EMAIL === null && USER_PASSWORD === null ? alert("Please SingUp Invalid crendentials") : genToken()

@@ -16,7 +16,8 @@ export default (state = initialState, action) => {
         case ADD_TO_CART:
             itemSelected = MockData.toys.find(item => item.id === action.payload)
             itemSelected.qty += 1
-            // itemSelected.inCart = true
+            itemSelected.inCart = true
+            console.log("::::::::::", itemSelected )
             return {
               ...state,
               items: {
@@ -26,14 +27,15 @@ export default (state = initialState, action) => {
               itemsInCart : state.itemsInCart += 1,
               totalPrice : state.totalPrice + itemSelected.price
             }
-            console.log("::::::::::",  this.items )
         case REMOVE_FROM_CART:
             itemSelected = MockData.toys.find(item => item.id === action.payload)
             let overallQty = itemSelected.qty
             itemSelected.qty = 0
-            // itemSelected.pname = ""
-            // itemSelected.image = ""
+            itemSelected.pname = ""
+            itemSelected.image = ""
+            itemSelected.price = itemSelected.price 
             itemSelected.inCart = false
+            console.log(":::::::::: REMOVE", itemSelected )
             return {
                 ...state,
                 totalPrice : state.totalPrice - (overallQty * itemSelected.price),

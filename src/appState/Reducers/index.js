@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet'
 import storage from 'redux-persist/lib/storage'
 import cartReducer from './cartReducer';
 import authReducer from './authReducer';
@@ -10,7 +11,8 @@ import checkOutReducer from './checkOutReducer';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['homeState','cartState', 'authState', 'checkOutState'] 
+    whitelist: ['homeState', 'authState', 'checkOutState'] ,
+    blacklist: ['cartState']
   }
 
 const rootReducer = combineReducers({
