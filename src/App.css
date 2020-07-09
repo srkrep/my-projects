@@ -91,6 +91,20 @@
   text-transform:capitalize;
 }
 
+.underline{
+  text-decoration: underline;
+}
+
+.email{
+  font-weight: 500;
+  color:#e8a227;
+}
+
+.address{
+  font-weight: 500;
+  color:red;
+}
+
 .dinline{
   display:inline-flex;
 }
@@ -233,6 +247,22 @@ select {
 .border{
   border:1px solid #9ecd58;
 }
+
+.navy{
+  color:navy;
+}
+
+.blue{
+  color:blue;
+}
+   
+.orange{
+  color:orange;
+}
+                        
+.red{
+  color:red;
+}                     
 
 
 @media(max-width:480px){

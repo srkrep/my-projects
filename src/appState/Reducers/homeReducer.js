@@ -3,17 +3,17 @@ import { FILTER_ALL_TOYS, FILTER_SOFT_TOYS, FILTER_WOODEN_TOYS } from '../Action
 
 
 const initialState = {
-    products: MockData.toys,
+    items: MockData.toys,
 }
 
-console.log("Home Reducer", MockData.toys);
+// console.log("Home Reducer", MockData.toys);
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case FILTER_ALL_TOYS:
             return {
                 ...state,   
-                products: MockData.toys
+                items: MockData.toys
             }
         case FILTER_WOODEN_TOYS:
             let woodentoysFilter = MockData.toys.filter((toy) => {
@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
             })
             return {
                 ...state,   
-                products:woodentoysFilter
+                items:woodentoysFilter
             }
         case FILTER_SOFT_TOYS:
             let softToysFilter = MockData.toys.filter((toy) => {
@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
             })
             return {
                 ...state,   
-                products:softToysFilter
+                items:softToysFilter
             }
 
         default:

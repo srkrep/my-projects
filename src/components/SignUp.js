@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { userSignUpDetails } from '../appState/Actions/userDetails'
+import { userSignUpDetails } from '../appState/Actions/authActions';
 
 class SignUp extends Component {
 
@@ -15,6 +15,11 @@ class SignUp extends Component {
             height: '50px'
         }
 
+        const genToken = (e) => {
+            localStorage.setItem('JWT', Math.random().toString(36).slice(2));
+            this.props.history.push("/")
+        }
+
         const handleChange = (e) => {
             e.preventDefault();
             this.setState({
@@ -27,8 +32,7 @@ class SignUp extends Component {
             let userSignUp = this.state
             this.setState(this.state)
             this.props.userSignUpDetails(userSignUp);
-            localStorage.setItem('USER_EMAIL', this.state.email);
-            localStorage.setItem('USER_PASSWORD', this.state.password);
+            genToken()
             this.props.history.push('/signin');
         }
 

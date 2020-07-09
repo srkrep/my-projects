@@ -7,7 +7,7 @@ const PrivateRoute = ({auth, component:Component, ...rest}) => {
         <Route
         {...rest}
         render = {
-            props => Auth.isAuthenticated   ?
+            props => Auth.isAuthenticated ?
             (<Component {...props}/>) : (<Redirect to={{ pathname: "/signup" }}/>)
         }
         />

@@ -6,7 +6,7 @@ class Cart extends Component {
     
     constructor(props){
         super(props)
-        console.log("cart props : ", props);
+        // console.log("cart props : ", props);
     }
 
 
@@ -17,12 +17,11 @@ class Cart extends Component {
         }
 
         let toysInCart = []
-        const [toys] = [this.props.cartProps.items]
-        Object.values(toys).forEach((e) => {
-            return (
-              toysInCart.push(e)
-            )
-            
+
+        Object.keys(this.props.cartProps.items).forEach((e) => {
+            if(this.props.cartProps.items[e].inCart){
+                toysInCart.push(this.props.cartProps.items[e])
+            }    
         })
 
         toysInCart = toysInCart.map((e, index) => {
@@ -41,16 +40,16 @@ class Cart extends Component {
                         </div>
                         
                         <div className="col-xs-4 col-sm-2 col-lg-2">
-                            <button onClick={() => {this.props.itemQty('decrease', e.id)}} > - </button>
+                            <button onClick={() => {this.props.itemQty('decrease', index)}} > - </button>
                             <span> {e.qty} </span>
-                            <button onClick={() => {this.props.itemQty('increase', e.id)}}> + </button>
+                            <button onClick={() => {this.props.itemQty('increase', index)}}> + </button>
                         </div>
                     
                         <div className="col-xs-3 col-sm-2 col-lg-2">
                             <h5>{e.qty * e.price}.00</h5>
                         </div> 
                         <div className="col-xs-1 col-sm-1 col-lg-1">
-                            <h5 className="fa fa-trash-o" onClick={() => {this.props.removeFromCart(e.id)}}></h5>
+                            <h5 className="fa fa-trash-o" onClick={() => {this.props.removeFromCart(index)}}></h5>
                         </div>   
                     </div>
                   }

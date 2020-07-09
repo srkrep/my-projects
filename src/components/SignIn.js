@@ -1,22 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { userSignInDetails } from '../appState/Actions/userDetails'
+import { userSignInDetails } from '../appState/Actions/authActions';
 
 class SignIn extends Component {
-    userData
 
     constructor(props) {
         super(props)
-    }
-
-
-
-    componentWillUpdate() {
-
+        // console.log("SIGNIN PROPS :", this.props.authProps)
     }
 
     render() {
-        console.log("<<SIGN IN DATA>>");
 
         const handleChange = (e) => {
             this.setState({
@@ -24,19 +17,13 @@ class SignIn extends Component {
             });
         }
 
-        const genToken = (e) => {
-            localStorage.setItem('JWT', Math.random().toString(36).slice(2));
-            this.props.history.push("/")
-        }
-
         const signInSubmit = (e) => {
             e.preventDefault();
-            const USER_EMAIL = localStorage.getItem('USER_EMAIL');
-            const USER_PASSWORD = localStorage.getItem('USER_PASSWORD');
-            USER_EMAIL === null && USER_PASSWORD === null ? alert("Please SingUp Invalid crendentials") : genToken()
-
-            console.log("<<SIGN IN VALUE>>",)
-            
+                let userSignIn = this.state
+                this.setState(this.state)
+                this.props.userSignInDetails(userSignIn)
+                this.props.history.push('/') 
+            console.log("<<SIGN IN VALUE>>", this.props.authProps.isAuthenticated)       
         }
 
         return (

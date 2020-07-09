@@ -4,7 +4,7 @@ const initialState = {
     
 }
 
-console.log("CheckOut Reducer", initialState)
+// console.log("CheckOut Reducer", initialState)
 
 export default (state = initialState, action) => {
     switch (action.type) {

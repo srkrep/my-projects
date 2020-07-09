@@ -1,16 +1,36 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { userSignOut } from '../appState/Actions/authActions';
+
+
 
 class NavBar extends Component {
-    userData;
     constructor(props){
         super(props)
-        console.log("<<<<<NAVBAR PROPS>>>>>", this.props)   
+        // console.log("<<<<<NAVBAR PROPS>>>>>", this.props)   
     }
 
-
     render() {
+
+        const { isAuthenticated } = this.props.authProps;
+
+        const signout = () => {
+            this.props.history.push('/cart')
+            this.props.userSignOut(false)
+        }
+
+        const userLinks = (
+             <li onClick={signout}>SignOut</li>
+        )
+
+        const guestLinks = (
+            <Fragment>
+                <li><Link to="/signin">SignIn</Link></li>
+                <li><Link to="/signup">SignUp</Link></li>
+            </Fragment>
+        )
+
         return (
             <header className="navbar">
                 <div className="row center-xs start-lg">
@@ -20,9 +40,7 @@ class NavBar extends Component {
                   <div className="col-xs-12 col-sm-8 col-lg-8">
                     <ul className="nav dinline">
                         <li><Link to={location => ({ ...location, pathname: `/cart` })} className="fa fa-shopping-cart fa-2x"> {this.props.cartProps.itemsInCart} </Link></li>
-                        <li><Link to="/signin">SignIn</Link></li>
-                        <li><Link to="/signup">SignUp</Link></li>
-                        <li><Link to={location => ({...location, pathname: `/signout` })}>SignOut</Link></li>
+                        { isAuthenticated ? userLinks : guestLinks}
                     </ul>
                   </div>
                 </div>
@@ -33,7 +51,8 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => ({
-    cartProps: state.cartState
+    cartProps: state.cartState,
+    authProps: state.authState
 })
 
-export default connect(mapStateToProps,)(NavBar)    
+export default connect(mapStateToProps, {userSignOut})(NavBar)    

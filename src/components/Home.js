@@ -11,21 +11,28 @@ class Home extends Component {
             search: '',
             sortType:'dsc'
         }
-        console.log("HOME PROPS", this.props.homeProps)
+        // console.log("HOME PROPS", this.props)
     }
 
-    
 
     render() {
-        let filteredToys = this.props.homeProps.products.filter((e) => {
-             return e.pname.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+       
+        let filteredToys = []
+
+        Object.keys(this.props.cartProps.items).forEach((e) => {
+          filteredToys.push(this.props.cartProps.items[e])  
         })
 
-        let sorted =  filteredToys.sort((a, b) => {
+        const toys = filteredToys.filter((e) => {
+            return e.pname.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+        })
+
+        let sorted =  toys.sort((a, b) => {
             const isReversed = (this.state.sortType === 'asc') ? 1 : -1
             return isReversed * (a.price - b.price)
         })
-        
+
+        // console.log("<<<filteredToys>>>>",filteredToys)
 
         const onSort = sortType => {
         this.setState({sortType});
@@ -61,14 +68,14 @@ class Home extends Component {
                 </div>
                 <div className="row center-xs center-sm center-lg">
                     {
-                          filteredToys.map((e, index) => {
+                          toys.map((e, index) => {
                             return <div className="col-xs-9 col-sm-5 col-md-6 col-lg-3 card center" key={index}>
                                     <img src={e.image} alt={e.pname} width="60%"/><br></br>
                                     <div className="dinline">
                                         <span className="pname">{e.pname}</span>
                                         <span className="mrl50 price">{e.price}.00</span>
                                         <span className="">
-                                            <img className="cart-icon" src="../images/toys/cart.png" alt="cart" onClick={() => {this.props.addToCart(e.id)}}/>
+                                            <img className="cart-icon" src="../images/toys/cart.png" alt="cart" onClick={() => {this.props.addToCart(index)}}/>
                                         </span>
                                     </div>
                                   </div>
@@ -82,7 +89,7 @@ class Home extends Component {
 
 
 const mapStateToProps = state => ({
-    homeProps: state.homeState,
+    cartProps: state.cartState,
 })
 
 
