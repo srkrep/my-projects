@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
+
 class CheckOut extends Component {
 
     constructor(props){
@@ -86,4 +87,4 @@ const mapStateToProps = state => ({
     authProps: state.authState
 })
 
-export default connect(mapStateToProps,{})(CheckOut)
+export default connect(mapStateToProps)(CheckOut)

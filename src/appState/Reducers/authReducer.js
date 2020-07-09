@@ -11,7 +11,6 @@ const initialState = {
 // console.log("Auth Reducer", initialState)
 
 export default (state = initialState, action) => {
-    console.log("AUTH ACTION", action)
     switch (action.type) {
         case USER_LOGIN_DETAILS:
             return {

@@ -4,7 +4,7 @@ import {
     ADD_QTY, REMOVE_QTY, 
     FILTER_ALL_TOYS, 
     FILTER_SOFT_TOYS, 
-    FILTER_WOODEN_TOYS  } from '../Actions/types';
+    FILTER_WOODEN_TOYS } from '../Actions/types';
 import MockData from '../../mock-data/data.json';
 
 const initialState = {

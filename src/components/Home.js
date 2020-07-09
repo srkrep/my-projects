@@ -19,25 +19,27 @@ class Home extends Component {
        
         let filteredToys = []
 
+        //Data
         Object.keys(this.props.cartProps.items).forEach((e) => {
           filteredToys.push(this.props.cartProps.items[e])  
         })
 
+        //Search Filter
         const toys = filteredToys.filter((e) => {
             return e.pname.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
         })
 
+        //Sorting Price
         let sorted =  toys.sort((a, b) => {
             const isReversed = (this.state.sortType === 'asc') ? 1 : -1
             return isReversed * (a.price - b.price)
         })
 
-        // console.log("<<<filteredToys>>>>",filteredToys)
-
+        //Sort
         const onSort = sortType => {
-        this.setState({sortType});
+           this.setState({sortType});
         }
-
+        //Search 
         const realTimeSearch = (e) => {
             e.preventDefault();
             this.setState({

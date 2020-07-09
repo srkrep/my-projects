@@ -21,38 +21,11 @@
                     "inCart": false
                 },
                 {
-                    "id": 102,
-                    "pname": "grey elephant",
-                    "category": "soft",
-                    "image": "../images/toys/img-02.png",
-                    "price": 350,
-                    "qty": 0,
-                    "inCart": false
-                },
-                {
                     "id": 103,
                     "pname": "pluto yellow dog",
                     "category": "soft",
                     "image": "../images/toys/img-03.png",
                     "price": 800,
-                    "qty": 0,
-                    "inCart": false
-                },
-                {
-                    "id": 103,
-                    "pname": "pluto yellow dog",
-                    "category": "soft",
-                    "image": "../images/toys/img-03.png",
-                    "price": 800,
-                    "qty": 0,
-                    "inCart": false
-                },
-                {
-                    "id": 104,
-                    "pname": "cute dog",
-                    "category": "soft",
-                    "image": "../images/toys/img-04.png",
-                    "price": 480,
                     "qty": 0,
                     "inCart": false
                 },

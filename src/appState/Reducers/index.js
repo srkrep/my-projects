@@ -10,7 +10,7 @@ import checkOutReducer from './checkOutReducer';
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['homeState', 'authState', 'checkOutState', 'cartState']
+    whitelist: ['homeState', 'authState', 'checkOutState', 'cartState']
   }
 
 const rootReducer = combineReducers({
