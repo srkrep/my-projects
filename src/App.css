@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap');
+
+body{
+  background: #ffffff;
+  font-family: 'Roboto Condensed';
+  font-weight: normal;
+}
+
+/*-------GRID--------*/
+
+.container{
+  display:flex;
+  flex-wrap: nowrap;
+}
+
+.row{
+  flex-direction: row;
+}
+
+/*-------GRID--------*/
+
+.justify-content-center{
+  justify-content: center;
+}
+
+.justify-content-end{
+  justify-content:flex-end;
+}
+
+.title{
+  color:#666;
+}
+
+.card{
+  height: 229px;
+  width: 320px;
+  color:#fff;
+  background: #0099ff;
+  margin-top:50px;
+  padding:35px;
+}
+
+input:only-of-type{
+  height:40px;
+  width:160px;
+  border-radius:0;
+}
+
+select:only-of-type{
+  height: 46px;
+  border-radius:0;
+}
+
+.policy{
+  font-weight:400;
+  font-style: italic;
+}
+
+.btn{
+  width:200px;
+  height:40px;
+  background: #fff;
+  box-shadow: #333 1px 3px 1px;
+}
+
+.card > img{
+  margin: auto 138px;
+}
+
+.card label {
+  margin-right:5px;
+} 
+
+.width-100{
+  width:97% !important;
+}
+
